@@ -140,7 +140,7 @@ pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', r
 	cns.gbm.alt <- '#4A4A4A' 
 	cns.oligo  <- '#787878'
 	colorect.adenoca <- '#191970' 
-	eso.aenoca <- '#1E90FF'
+	eso.adenoca <- '#1E90FF'
 	head.scc  <- '#8B2323'
 	kidney.rcc <- '#FF4500' 
 	kidney.chrcc <- '#B32F0B' 
@@ -154,7 +154,7 @@ pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', r
 	ovary.adenoca <- '#008B8B' 
 	panc.adenoca <- '#7A378B'
 	panc.endocrine <- '#E066FF' 
-	pro.adenoca <- '#87CEFA'
+	prost.adenoca <- '#87CEFA'
 	skin.melanoma <- '#000000' 
 	stomach.adenoca <- '#BFEFFF' 
 	thy.adenoca <- '#9370DB'
@@ -243,12 +243,12 @@ pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', r
 			colours = c(primary, metastatic)
 			),
 		tumour.subtype = list(
-			levels	= c('biliary.adenoca', 'bladder.tcc', 'bone.osteosarc', 'bone.leiomyo', 'bone.epith', 'breast.adenoca', 'cervix.scc', 'cns.medullo', 'cns.piloastro', 'cns.gbm', 'cns.gbm.alt', 'cns.oligo', 'colorect.adenoca', 'eso.aenoca', 'head.scc', 'kidney.rcc', 'kidney.chrcc', 'liver.hcc', 'lung.scc', 'lung.adenoca', 'lymph.bnhl', 'lymph.cll', 'myeloid.mpn', 'myeloid.aml', 'ovary.adenoca', 'panc.adenoca', 'panc.endocrine', 'pro.adenoca', 'skin.melanoma', 'stomach.adenoca', 'thy.adenoca', 'uterus.adenoca', 'bone.cart', 'bone.cart.alt', 'breast.lobularca', 'breast.lobularca.alt', 'breast.dcis', 'lymph.nos', 'myeloid.mds', 'cervix.adenoca'),
-			colours = c(biliary.adenoca, bladder.tcc, bone.osteosarc, bone.leiomyo, bone.epith, breast.adenoca, cervix.scc, cns.medullo, cns.piloastro, cns.gbm, cns.gbm.alt, cns.oligo, colorect.adenoca, eso.aenoca, head.scc, kidney.rcc, kidney.chrcc, liver.hcc, lung.scc, lung.adenoca, lymph.bnhl, lymph.cll, myeloid.mpn, myeloid.aml, ovary.adenoca, panc.adenoca, panc.endocrine, pro.adenoca, skin.melanoma, stomach.adenoca, thy.adenoca, uterus.adenoca, bone.cart, bone.cart.alt, breast.lobularca, breast.lobularca.alt, breast.dcis, lymph.nos, myeloid.mds, cervix.adenoca)
+			levels	= c('biliary.adenoca', 'bladder.tcc', 'bone.osteosarc', 'bone.leiomyo', 'bone.epith', 'breast.adenoca', 'cervix.scc', 'cns.medullo', 'cns.piloastro', 'cns.gbm', 'cns.gbm.alt', 'cns.oligo', 'colorect.adenoca', 'eso.adenoca', 'head.scc', 'kidney.rcc', 'kidney.chrcc', 'liver.hcc', 'lung.scc', 'lung.adenoca', 'lymph.bnhl', 'lymph.cll', 'myeloid.mpn', 'myeloid.aml', 'ovary.adenoca', 'panc.adenoca', 'panc.endocrine', 'prost.adenoca', 'skin.melanoma', 'stomach.adenoca', 'thy.adenoca', 'uterus.adenoca', 'bone.cart', 'bone.cart.alt', 'breast.lobularca', 'breast.lobularca.alt', 'breast.dcis', 'lymph.nos', 'myeloid.mds', 'cervix.adenoca'),
+			colours = c(biliary.adenoca, bladder.tcc, bone.osteosarc, bone.leiomyo, bone.epith, breast.adenoca, cervix.scc, cns.medullo, cns.piloastro, cns.gbm, cns.gbm.alt, cns.oligo, colorect.adenoca, eso.adenoca, head.scc, kidney.rcc, kidney.chrcc, liver.hcc, lung.scc, lung.adenoca, lymph.bnhl, lymph.cll, myeloid.mpn, myeloid.aml, ovary.adenoca, panc.adenoca, panc.endocrine, prost.adenoca, skin.melanoma, stomach.adenoca, thy.adenoca, uterus.adenoca, bone.cart, bone.cart.alt, breast.lobularca, breast.lobularca.alt, breast.dcis, lymph.nos, myeloid.mds, cervix.adenoca)
 			),
 		organ.system = list(
 			levels = c('biliary', 'bladder', 'bone.softtissue', 'breast','cervix', 'cns', 'colon.rectum', 'esophagus', 'head.neck', 'kidney', 'liver', 'lung', 'lymphoid','myeloid', 'ovary', 'pancreas','prostate', 'skin', 'stomach', 'thyroid', 'uterus'),
-			colours = c(biliary.adenoca, bladder.tcc, bone.leiomyo, breast.adenoca, cervix.scc, cns.oligo, colorect.adenoca, eso.aenoca, head.scc, kidney.rcc, liver.hcc, lung.scc, lymph.bnhl, myeloid.aml, ovary.adenoca, panc.adenoca, pro.adenoca, skin.melanoma, stomach.adenoca, thy.adenoca, uterus.adenoca)
+			colours = c(biliary.adenoca, bladder.tcc, bone.leiomyo, breast.adenoca, cervix.scc, cns.oligo, colorect.adenoca, eso.adenoca, head.scc, kidney.rcc, liver.hcc, lung.scc, lymph.bnhl, myeloid.aml, ovary.adenoca, panc.adenoca, prost.adenoca, skin.melanoma, stomach.adenoca, thy.adenoca, uterus.adenoca)
 			)
 		)
 	
