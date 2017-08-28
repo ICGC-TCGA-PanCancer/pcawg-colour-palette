@@ -1,31 +1,37 @@
-### pcawg.colour.palette.R ########################################################################
+### pcawg.colour.palette.R #########################################################################
 #
 # Authors: Jennifer Aguiar & Constance Li (constance.li@oicr.on.ca)
 #
 
-### DESCRIPTION ###################################################################################
+### DESCRIPTION ####################################################################################
 #
 # Return standard PCAWG colour palettes. Case insensitive.
 # 
 # To see all available schemes, set:			scheme='all', return.scheme = FALSE
 # To return all full schemes, set: 			scheme='all', return.scheme = TRUE
 # To return specific full schemes, set: 	scheme=<wanted scheme>, return.scheme = TRUE
-#   Note: x will be ignored when scheme='all' OR return.scheme = TRUE 
+#	 Note: x will be ignored when scheme='all' OR return.scheme = TRUE 
 # To return colours for specific values, 
 
-### ARGUMENTS #####################################################################################
+### ARGUMENTS ######################################################################################
 # x 				Chracter vector with terms to be mapped to colours. Ignored if scheme='all' or 
-#					  return.scheme=TRUE
+#						return.scheme=TRUE
 # scheme 			String specifying desired colour scheme. To see all available schemes, use 
-#					  scheme='all', returns.scheme=FALSE
+#						scheme='all', returns.scheme=FALSE
 # fill.colour 		Unrecognized output will be filled with this colour. Default to 'slategrey'
 # return.scheme 	TRUE/FALSE. Set to true to return full specified scheme. Set to false to map
-#					  x to colours 
+#						x to colours 
 # 
 
-### MAIN ##########################################################################################
+### MAIN ###########################################################################################
 
-pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', return.scheme=FALSE){
+pcawg.colour.palette <- function(
+	x = NULL,
+	scheme = NULL,
+	fill.colour = 'slategrey',
+	return.scheme = FALSE
+	) {
+
 	# Define all colours 
 	# Coding SNV mutation subtypes & consequences 
 	nonsynonymous <- '#698B69'
@@ -130,25 +136,26 @@ pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', r
 	biliary.adenoca <- '#00CD66'
 	bladder.tcc <- '#EEAD0E' 
 	bone.osteosarc <- '#FFD700'
-	bone.leiomyo <- '#FFEC8B'
-	bone.epith  <- '#ADAC44'
+	softtissue.leiomyo <- '#FFEC8B'
+	softtissue.liposarc <- '#CDCB50'
+	bone.epith <- '#ADAC44'
 	breast.adenoca <- '#CD6090' 
 	cervix.scc <- '#79CDCD' 
 	cns.medullo <- '#D8BFD8'
 	cns.piloastro <- '#B0B0B0' 
 	cns.gbm <- '#3D3D3D' 
 	cns.gbm.alt <- '#4A4A4A' 
-	cns.oligo  <- '#787878'
+	cns.oligo <- '#787878'
 	colorect.adenoca <- '#191970' 
 	eso.adenoca <- '#1E90FF'
-	head.scc  <- '#8B2323'
+	head.scc <- '#8B2323'
 	kidney.rcc <- '#FF4500' 
 	kidney.chrcc <- '#B32F0B' 
 	liver.hcc <- '#006400' 
 	lung.scc <- '#FDF5E6'
 	lung.adenoca <- '#FFFFFF' 
 	lymph.bnhl <- '#698B22'
-	lymph.cll <- '#F4A35D' 
+	lymph.cll <- '#698B22' 
 	myeloid.mpn <- '#FFC100' 
 	myeloid.aml <- '#CD6600' 
 	ovary.adenoca <- '#008B8B' 
@@ -165,10 +172,11 @@ pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', r
 	breast.lobularca.alt <- '#F095BD'
 	breast.dcis <- '#DDCDCD'
 	lymph.nos <- '#DDCDCD'
+	lymph.nos.alt <- '#698B22'
 	myeloid.mds <- '#DDCDCD'
 	cervix.adenoca <- '#DDCDCD'
 
-	#----------------------------------------------------------------------------------------------
+	#-----------------------------------------------------------------------------------------------
 	# Some input checking & processing 
 	if (class(x) == 'factor') {
 		stop('x cannot be a factor: please coerce to character before passing')
@@ -186,69 +194,425 @@ pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', r
 
 	colour.schemes <- list(
 		coding.snv = list(
-			levels = c('nonsynonymous', 'synonymous', 'stopgain', 'stoploss', 'indel.frameshift', 'indel.nonframeshift', 'splicing'),
-			colours = c(nonsynonymous, synonymous, stop.gain ,stop.loss, indel.frameshift, indel.nonframeshift, splicing)
+			levels = c(
+				'nonsynonymous',
+				'synonymous',
+				'stopgain',
+				'stoploss',
+				'indel.frameshift',
+				'indel.nonframeshift',
+				'splicing'
+				),
+			colours = c(
+				nonsynonymous,
+				synonymous,
+				stop.gain,
+				stop.loss,
+				indel.frameshift,
+				indel.nonframeshift,
+				splicing
+				)
 			),
 		noncoding.snv = list(
-			levels = c('noncoding', 'promoter', 'enhancer', 'operator', 'silencer', 'insulator', 'lncrna', 'sncrna', 'trna', 'rrna', 'mirna', 'utr5.utr3', 'intronic', 'intergenic', 'telomeres'),
-			colours = c(non.coding, promoter, enhancer, operator, silencer, insulator, lncRNA, sncRNA, tRNA, rRNA, miRNA, utr5.utr3, intronic, intergenic, telomeres)
+			levels = c(
+				'noncoding',
+				'promoter',
+				'enhancer',
+				'operator',
+				'silencer',
+				'insulator',
+				'lncrna',
+				'sncrna',
+				'trna',
+				'rrna',
+				'mirna',
+				'utr5.utr3',
+				'intronic',
+				'intergenic',
+				'telomeres'
+				),
+			colours = c(
+				non.coding,
+				promoter,
+				enhancer,
+				operator,
+				silencer,
+				insulator,
+				lncRNA,
+				sncRNA,
+				tRNA,
+				rRNA,
+				miRNA,
+				utr5.utr3,
+				intronic,
+				intergenic,
+				telomeres
+				)
 			),
 		# ADD TFBS
 		structural.variants = list(
-			levels = c('cna.gain' ,'cna.loss', 'inversion', 'transposition', 'translocation'),
-			colours = c(cna.gain, cna.loss, inversion, transposition, translocation)
+			levels = c(
+				'cna.gain',
+				'cna.loss',
+				'inversion',
+				'transposition',
+				'translocation'
+				),
+			colours = c(
+				cna.gain,
+				cna.loss,
+				inversion,
+				transposition,
+				translocation
+				)
 			),
 		chromosomes = list(
-			levels	= c('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','x','y'),
-			colours = c(chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr20, chr21, chr22, chrX, chrY)
+			levels	= c(
+				'1',
+				'2',
+				'3',
+				'4',
+				'5',
+				'6',
+				'7',
+				'8',
+				'9',
+				'10',
+				'11',
+				'12',
+				'13',
+				'14',
+				'15',
+				'16',
+				'17',
+				'18',
+				'19',
+				'20',
+				'21',
+				'22',
+				'x',
+				'y'
+				),
+			colours = c(
+				chr1,
+				chr2,
+				chr3,
+				chr4,
+				chr5,
+				chr6,
+				chr7,
+				chr8,
+				chr9,
+				chr10,
+				chr11,
+				chr12,
+				chr13,
+				chr14,
+				chr15,
+				chr16,
+				chr17,
+				chr18,
+				chr19,
+				chr20,
+				chr21,
+				chr22,
+				chrX,
+				chrY
+				)
 			),
 		sex = list(
-			levels = c('male', 'female'),
-			colours = c(male, female)
+			levels = c(
+				'male',
+				'female'
+				),
+			colours = c(
+				male,
+				female
+				)
 			),
 		stage.arabic = list(
-			levels = c('1', '2', '3', '4'),
-			colours = c(st.one, st.two, st.three, st.four)
+			levels = c(
+				'1',
+				'2',
+				'3',
+				'4'
+				),
+			colours = c(
+				st.one,
+				st.two,
+				st.three,
+				st.four
+				)
 			),
 		stage.roman = list(
-			levels = c('i', 'i.ii', 'i.iii', 'ii', 'ii.i', 'ii.iii', 'iii', 'iv'),
-			colours = c(st.one, st.one.two, st.one.three, st.two, st.two.one, st.two.three, st.three, st.four)
+			levels = c(
+				'i',
+				'i.ii',
+				'i.iii',
+				'ii',
+				'ii.i',
+				'ii.iii',
+				'iii',
+				'iv'
+				),
+			colours = c(
+				st.one,
+				st.one.two,
+				st.one.three,
+				st.two,
+				st.two.one,
+				st.two.three,
+				st.three,
+				st.four
+				)
 			),
 		t.category = list(
-			levels	= c('0', '1', '2', '3', '4', 'x'),
-			colours = c(tnm.zero, tn.one, tn.two, tn.three, tn.four, tnm.x)
+			levels	= c(
+				'0',
+				'1',
+				'2',
+				'3',
+				'4',
+				'x'
+				),
+			colours = c(
+				tnm.zero,
+				tn.one,
+				tn.two,
+				tn.three,
+				tn.four,
+				tnm.x
+				)
 			),
 		n.category = list(
-			levels	= c('0', '1', '2', '3', '4', 'x'),
-			colours = c(tnm.zero, tn.one, tn.two, tn.three, tn.four, tnm.x)
+			levels	= c(
+				'0',
+				'1',
+				'2',
+				'3',
+				'4',
+				'x'
+				),
+			colours = c(
+				tnm.zero,
+				tn.one,
+				tn.two,
+				tn.three,
+				tn.four,
+				tnm.x
+				)
 			),
 		m.category = list(
-			levels = c('0', '1', 'x'),
-			colours = c(tnm.zero, m.one, tnm.x)
+			levels = c(
+				'0',
+				'1',
+				'x'
+				),
+			colours = c(
+				tnm.zero,
+				m.one,
+				tnm.x
+				)
 			),
 		grade = list(
-			levels = c('G1', 'G2', 'G3', 'G4'),
-			colours = c(gr.one, gr.two, gr.three, gr.four)
+			levels = c(
+				'G1',
+				'G2',
+				'G3',
+				'G4'
+				),
+			colours = c(
+				gr.one,
+				gr.two,
+				gr.three,
+				gr.four
+				)
 			),
 		grade.word = list(
-			levels = c('well.differentiated', 'moderately.differentiated', 'poorly.differentiated', 'undifferentiated'),
-			colours = c(gr.well, gr.mod, gr.poor, gr.un)
+			levels = c(
+				'well.differentiated',
+				'moderately.differentiated',
+				'poorly.differentiated',
+				'undifferentiated'
+				),
+			colours = c(
+				gr.well,
+				gr.mod,
+				gr.poor,
+				gr.un
+				)
 			),
 		prostate.grade = list(
-			levels	= c('3+3', '3+4', '3+5', '4+3', '4+4', '4+5', '5+3', '5+4', '5+5'),
-			colours = c(pr.three.three, pr.three.four, pr.three.five, pr.four.three, pr.four.four, pr.four.five, pr.five.three, pr.five.four, pr.five.five)
+			levels	= c(
+				'3+3',
+				'3+4',
+				'3+5',
+				'4+3',
+				'4+4',
+				'4+5',
+				'5+3',
+				'5+4',
+				'5+5'
+				),
+			colours = c(
+				pr.three.three,
+				pr.three.four,
+				pr.three.five,
+				pr.four.three,
+				pr.four.four,
+				pr.four.five,
+				pr.five.three,
+				pr.five.four,
+				pr.five.five
+				)
 			),
 		primary.met = list(
-			levels = c('primary', 'metastatic'),
-			colours = c(primary, metastatic)
+			levels = c(
+				'primary',
+				'metastatic'
+				),
+			colours = c(
+				primary,
+				metastatic
+				)
 			),
 		tumour.subtype = list(
-			levels	= c('biliary.adenoca', 'bladder.tcc', 'bone.osteosarc', 'bone.leiomyo', 'bone.epith', 'breast.adenoca', 'cervix.scc', 'cns.medullo', 'cns.piloastro', 'cns.gbm', 'cns.gbm.alt', 'cns.oligo', 'colorect.adenoca', 'eso.adenoca', 'head.scc', 'kidney.rcc', 'kidney.chrcc', 'liver.hcc', 'lung.scc', 'lung.adenoca', 'lymph.bnhl', 'lymph.cll', 'myeloid.mpn', 'myeloid.aml', 'ovary.adenoca', 'panc.adenoca', 'panc.endocrine', 'prost.adenoca', 'skin.melanoma', 'stomach.adenoca', 'thy.adenoca', 'uterus.adenoca', 'bone.cart', 'bone.cart.alt', 'breast.lobularca', 'breast.lobularca.alt', 'breast.dcis', 'lymph.nos', 'myeloid.mds', 'cervix.adenoca'),
-			colours = c(biliary.adenoca, bladder.tcc, bone.osteosarc, bone.leiomyo, bone.epith, breast.adenoca, cervix.scc, cns.medullo, cns.piloastro, cns.gbm, cns.gbm.alt, cns.oligo, colorect.adenoca, eso.adenoca, head.scc, kidney.rcc, kidney.chrcc, liver.hcc, lung.scc, lung.adenoca, lymph.bnhl, lymph.cll, myeloid.mpn, myeloid.aml, ovary.adenoca, panc.adenoca, panc.endocrine, prost.adenoca, skin.melanoma, stomach.adenoca, thy.adenoca, uterus.adenoca, bone.cart, bone.cart.alt, breast.lobularca, breast.lobularca.alt, breast.dcis, lymph.nos, myeloid.mds, cervix.adenoca)
+			levels	= c(
+				'biliary.adenoca',
+				'bladder.tcc',
+				'bone.osteosarc',
+				'softtissue.leiomyo', 
+				'softtissue.liposarc',
+				'bone.epith',
+				'breast.adenoca',
+				'cervix.scc',
+				'cns.medullo',
+				'cns.piloastro',
+				'cns.gbm',
+				'cns.gbm.alt',
+				'cns.oligo',
+				'colorect.adenoca',
+				'eso.adenoca',
+				'head.scc',
+				'kidney.rcc',
+				'kidney.chrcc',
+				'liver.hcc',
+				'lung.scc',
+				'lung.adenoca',
+				'lymph.bnhl',
+				'lymph.cll',
+				'myeloid.mpn',
+				'myeloid.aml',
+				'ovary.adenoca',
+				'panc.adenoca',
+				'panc.endocrine',
+				'prost.adenoca',
+				'skin.melanoma',
+				'stomach.adenoca',
+				'thy.adenoca',
+				'uterus.adenoca',
+				'bone.cart',
+				'bone.cart.alt',
+				'breast.lobularca',
+				'breast.lobularca.alt',
+				'breast.dcis',
+				'lymph.nos',
+				'lymph.nos.alt',
+				'myeloid.mds',
+				'cervix.adenoca'
+				),
+			colours = c(
+				biliary.adenoca,
+				bladder.tcc,
+				bone.osteosarc,
+				softtissue.leiomyo,
+				softtissue.liposarc,
+				bone.epith,
+				breast.adenoca,
+				cervix.scc,
+				cns.medullo,
+				cns.piloastro,
+				cns.gbm,
+				cns.gbm.alt,
+				cns.oligo,
+				colorect.adenoca,
+				eso.adenoca,
+				head.scc,
+				kidney.rcc,
+				kidney.chrcc,
+				liver.hcc,
+				lung.scc,
+				lung.adenoca,
+				lymph.bnhl,
+				lymph.cll,
+				myeloid.mpn,
+				myeloid.aml,
+				ovary.adenoca,
+				panc.adenoca,
+				panc.endocrine,
+				prost.adenoca,
+				skin.melanoma,
+				stomach.adenoca,
+				thy.adenoca,
+				uterus.adenoca,
+				bone.cart,
+				bone.cart.alt,
+				breast.lobularca,
+				breast.lobularca.alt,
+				breast.dcis,
+				lymph.nos,
+				lymph.nos.alt,
+				myeloid.mds,
+				cervix.adenoca
+				)
 			),
 		organ.system = list(
-			levels = c('biliary', 'bladder', 'bone.softtissue', 'breast','cervix', 'cns', 'colon.rectum', 'esophagus', 'head.neck', 'kidney', 'liver', 'lung', 'lymphoid','myeloid', 'ovary', 'pancreas','prostate', 'skin', 'stomach', 'thyroid', 'uterus'),
-			colours = c(biliary.adenoca, bladder.tcc, bone.leiomyo, breast.adenoca, cervix.scc, cns.oligo, colorect.adenoca, eso.adenoca, head.scc, kidney.rcc, liver.hcc, lung.scc, lymph.bnhl, myeloid.aml, ovary.adenoca, panc.adenoca, prost.adenoca, skin.melanoma, stomach.adenoca, thy.adenoca, uterus.adenoca)
+			levels = c(
+				'biliary',
+				'bladder',
+				'bone.softtissue',
+				'breast',
+				'cervix',
+				'cns',
+				'colon.rectum',
+				'esophagus',
+				'head.neck',
+				'kidney',
+				'liver',
+				'lung',
+				'lymphoid',
+				'myeloid',
+				'ovary',
+				'pancreas',
+				'prostate',
+				'skin',
+				'stomach',
+				'thyroid',
+				'uterus'
+				),
+			colours = c(
+				biliary.adenoca,
+				bladder.tcc,
+				softtissue.leiomyo,
+				breast.adenoca,
+				cervix.scc,
+				cns.oligo,
+				colorect.adenoca,
+				eso.adenoca,
+				head.scc,
+				kidney.rcc,
+				liver.hcc,
+				lung.scc,
+				lymph.bnhl,
+				myeloid.aml,
+				ovary.adenoca,
+				panc.adenoca,
+				prost.adenoca,
+				skin.melanoma,
+				stomach.adenoca,
+				thy.adenoca,
+				uterus.adenoca
+				)
 			)
 		)
 	
@@ -266,8 +630,9 @@ pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', r
 		}
 	
 	# Form output colours 
-	x.colours <- colour.schemes[[scheme]]$colours[match(x.input, colour.schemes[[scheme]]$levels)]
-	names(x.colours) <- colour.schemes[[scheme]]$levels[match(x.input, colour.schemes[[scheme]]$levels)]
+	matched <- match(x.input, colour.schemes[[scheme]]$levels);
+	x.colours <- colour.schemes[[scheme]]$colours[matched]
+	names(x.colours) <- colour.schemes[[scheme]]$levels[matched]
 
 	# Deal with unrecognized input by setting to fill colour (slategray by default)
 	if (any(is.na(x.colours))) {
@@ -280,8 +645,17 @@ pcawg.colour.palette <- function(x=NULL, scheme=NULL, fill.colour='slategrey', r
 
 # Copyright (c) 2016 Ontario Institute for Cancer Research 
 
-# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+# Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+# associated documentation files (the "Software"), to deal in the Software without restriction,
+# including without limitation the rights to use, copy, modify, merge, publish, distribute,
+# sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
 
-# The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+# The above copyright notice and this permission notice shall be included in all copies or
+# substantial portions of the Software.
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
+# NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+# DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT
+# OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
