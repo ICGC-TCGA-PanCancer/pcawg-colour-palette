@@ -135,6 +135,7 @@ pcawg.colour.palette <- function(
 	# Tumour Subtype 
 	biliary.adenoca <- '#00CD66'
 	bladder.tcc <- '#EEAD0E' 
+	bone.benign <- '#F0EE60'
 	bone.osteosarc <- '#FFD700'
 	softtissue.leiomyo <- '#FFEC8B'
 	softtissue.liposarc <- '#CDCB50'
@@ -155,7 +156,7 @@ pcawg.colour.palette <- function(
 	lung.scc <- '#FDF5E6'
 	lung.adenoca <- '#FFFFFF' 
 	lymph.bnhl <- '#698B22'
-	lymph.cll <- '#698B22' 
+	lymph.cll <- '#C3D0A6' 
 	myeloid.mpn <- '#FFC100' 
 	myeloid.aml <- '#CD6600' 
 	ovary.adenoca <- '#008B8B' 
@@ -167,7 +168,6 @@ pcawg.colour.palette <- function(
 	thy.adenoca <- '#9370DB'
 	uterus.adenoca <- '#FF8C69'
 	bone.cart <- '#DDCDCD' 
-	bone.cart.alt <- '#F0EE60'
 	breast.lobularca <- '#DDCDCD' 
 	breast.lobularca.alt <- '#F095BD'
 	breast.dcis <- '#DDCDCD'
@@ -480,6 +480,7 @@ pcawg.colour.palette <- function(
 			levels	= c(
 				'biliary.adenoca',
 				'bladder.tcc',
+				'bone.benign',
 				'bone.osteosarc',
 				'softtissue.leiomyo', 
 				'softtissue.liposarc',
@@ -512,7 +513,6 @@ pcawg.colour.palette <- function(
 				'thy.adenoca',
 				'uterus.adenoca',
 				'bone.cart',
-				'bone.cart.alt',
 				'breast.lobularca',
 				'breast.lobularca.alt',
 				'breast.dcis',
@@ -524,6 +524,7 @@ pcawg.colour.palette <- function(
 			colours = c(
 				biliary.adenoca,
 				bladder.tcc,
+				bone.benign,
 				bone.osteosarc,
 				softtissue.leiomyo,
 				softtissue.liposarc,
@@ -556,7 +557,6 @@ pcawg.colour.palette <- function(
 				thy.adenoca,
 				uterus.adenoca,
 				bone.cart,
-				bone.cart.alt,
 				breast.lobularca,
 				breast.lobularca.alt,
 				breast.dcis,
