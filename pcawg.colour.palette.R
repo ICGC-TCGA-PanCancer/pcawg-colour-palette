@@ -156,7 +156,7 @@ pcawg.colour.palette <- function(
 	lung.scc <- '#FDF5E6'
 	lung.adenoca <- '#FFFFFF' 
 	lymph.bnhl <- '#698B22'
-	lymph.cll <- '#C3D0A6' 
+	lymph.cll <- '#F4A35D'
 	myeloid.mpn <- '#FFC100' 
 	myeloid.aml <- '#CD6600' 
 	ovary.adenoca <- '#008B8B' 
